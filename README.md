@@ -1,3 +1,7 @@
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/HenrikBengtsson/dumpsterfire/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/HenrikBengtsson/dumpsterfire/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 # dumpsterfire - A Minimal R Package With Tons of Issues 🔥
 
 This is a problematic, installable R package that triggers as many `R CMD check` ERROR:s, WARNING:s, and NOTE:s as possible.

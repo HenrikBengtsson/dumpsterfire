@@ -1,6 +1,6 @@
 Package: dumpsterfire
 Version: 20260606-1
-Title: A Minimal R Package with Tons of Issues
-Description: Problematic, installable R package that triggers as many R CMD check ERROR:s, WARNING:s, and NOTE:s, as possible.
+Title: A Minimal R Package with Tons of Issues. 
+Description: Problematic, installable R package that triggers as many R CMD check ERROR:s, WARNING:s, and NOTE:s, as possible
 Authors@R: c(person("Auth", "R.", role=c("aut", "cre"), email="robert@DROP-TABLE-Students.org"))
 License:  Havoc License (>= 2038)

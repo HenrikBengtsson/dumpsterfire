@@ -140,10 +140,32 @@ jobs:
             echo "No downloaded logs found."
           fi
           
+          # Generate/update README.md
+          cat << 'EOF' > README.md
+# dumpsterfire R CMD check Status 🔥
+
+This branch contains the check logs from the latest R CMD check run.
+
+## Logs by Environment
+- [macos-latest (release)](macos-latest/release/00check.log)
+- [windows-latest (release)](windows-latest/release/00check.log)
+- [ubuntu-latest (devel)](ubuntu-latest/devel/00check.log)
+- [ubuntu-latest (release)](ubuntu-latest/release/00check.log)
+- [ubuntu-latest (oldrel-1)](ubuntu-latest/oldrel-1/00check.log)
+
+EOF
+
+          if [ -f "ubuntu-latest/devel/00check.log" ]; then
+            echo "## Latest ubuntu-latest (devel) log" >> README.md
+            echo '```plain' >> README.md
+            cat ubuntu-latest/devel/00check.log >> README.md
+            echo '```' >> README.md
+          fi
+          
           # Check if there are any changes to commit
           if [ -n "$(git status --porcelain)" ]; then
             git add .
-            git commit -m "Update R CMD check logs [skip ci]"
+            git commit -m "Update R CMD check logs and README [skip ci]"
             git push origin status
           else
             echo "No changes to commit."

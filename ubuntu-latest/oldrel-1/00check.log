@@ -19,7 +19,15 @@ Found the following hidden files and directories:
   .hidden
 These were most likely included in error. See section ‘Package
 structure’ in the ‘Writing R Extensions’ manual.
-* checking for portable file names ... OK
+* checking for portable file names ... ERROR
+Found the following non-portable file path:
+  dumpsterfire/R/file4d63379dd92f8file4d6333d7ea80efile4d633279a4cddfile4d633345d1266file4d633591f729file4d6332cf21de3file4d6331a2349df.R
+
+Tarballs are only required to store paths of up to 100 bytes and cannot
+store those of more than 256 bytes, with restrictions including to 100
+bytes for the final component.
+See section ‘Package structure’ in the ‘Writing R Extensions’ manual.
+ OK
 * checking for sufficient/correct file permissions ... OK
 * checking serialization versions ... OK
 * checking whether package ‘dumpsterfire’ can be installed ... OK
@@ -102,4 +110,4 @@ Execution halted
 * checking for non-standard things in the check directory ... OK
 * checking for detritus in the temp directory ... OK
 * DONE
-Status: 1 ERROR, 2 WARNINGs, 5 NOTEs
+Status: 2 ERRORs, 2 WARNINGs, 5 NOTEs

@@ -18,7 +18,7 @@ This branch contains the check logs from the latest R CMD check run.
     GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
 * running under: Ubuntu 24.04.4 LTS
 * using session charset: UTF-8
-* current time: 2026-07-12 09:03:24 UTC
+* current time: 2026-07-12 09:18:54 UTC
 * using options ‘--no-manual --as-cran’
 * checking for file ‘dumpsterfire/DESCRIPTION’ ... OK
 * this is package ‘dumpsterfire’ version ‘20260606-1’
@@ -41,7 +41,9 @@ Malformed Description field: should contain one or more complete sentences.
 Non-standard license specification:
   Havoc License (>= 2038)
 Standardizable: FALSE
-* checking top-level files ... OK
+* checking top-level files ... NOTE
+Non-standard file/directory found at top level:
+  ‘Non-standard-file-found-at-top-level’
 * checking for left-over files ... OK
 * checking index information ... OK
 * checking package subdirectories ... OK
@@ -108,5 +110,5 @@ Execution halted
 * checking for non-standard things in the check directory ... OK
 * checking for detritus in the temp directory ... OK
 * DONE
-Status: 1 ERROR, 2 WARNINGs, 2 NOTEs
+Status: 1 ERROR, 2 WARNINGs, 3 NOTEs
 ```

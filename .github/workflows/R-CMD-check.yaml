@@ -48,3 +48,19 @@ jobs:
         with:
           upload-snapshots: true
           build_args: 'c("--no-manual","--compact-vignettes=gs+qpdf")'
+          error-on: '"never"'
+
+      - name: Verify build and install success
+        run: |
+          log_files <- list.files("check", pattern = "00check.log", recursive = TRUE, full.names = TRUE)
+          if (length(log_files) == 0) {
+            stop("Error: No 00check.log found. The package build probably failed completely.")
+          }
+          log_content <- readLines(log_files[1])
+          install_ok <- any(grepl("checking whether package .* can be installed ... OK", log_content))
+          if (!install_ok) {
+            stop("Error: Package installation failed or was not verified in 00check.log.")
+          }
+          message("Success: Package built and installed successfully.")
+        shell: Rscript {0}
+

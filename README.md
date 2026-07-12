@@ -1,5 +1,5 @@
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/HenrikBengtsson/dumpsterfire/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/HenrikBengtsson/dumpsterfire/actions/workflows/R-CMD-check.yaml)
+[![Build & Install](https://github.com/HenrikBengtsson/dumpsterfire/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/HenrikBengtsson/dumpsterfire/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 # dumpsterfire - A Minimal R Package With Tons of Issues 🔥

@@ -18,7 +18,7 @@ This branch contains the check logs from the latest R CMD check run.
     GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
 * running under: Ubuntu 24.04.4 LTS
 * using session charset: UTF-8
-* current time: 2026-07-12 09:34:28 UTC
+* current time: 2026-07-12 09:36:51 UTC
 * using options ‘--no-manual --as-cran’
 * checking for file ‘dumpsterfire/DESCRIPTION’ ... OK
 * this is package ‘dumpsterfire’ version ‘20260606-1’
@@ -27,7 +27,11 @@ This branch contains the check logs from the latest R CMD check run.
 * checking if this is a source package ... OK
 * checking if there is a namespace ... OK
 * checking for executable files ... OK
-* checking for hidden files and directories ... OK
+* checking for hidden files and directories ... NOTE
+Found the following hidden files and directories:
+  .hidden
+These were most likely included in error. See section ‘Package
+structure’ in the ‘Writing R Extensions’ manual.
 * checking for portable file names ... OK
 * checking for sufficient/correct file permissions ... OK
 * checking serialization versions ... OK
@@ -111,5 +115,5 @@ Execution halted
 * checking for non-standard things in the check directory ... OK
 * checking for detritus in the temp directory ... OK
 * DONE
-Status: 1 ERROR, 2 WARNINGs, 4 NOTEs
+Status: 1 ERROR, 2 WARNINGs, 5 NOTEs
 ```

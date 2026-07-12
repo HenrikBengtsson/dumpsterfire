@@ -18,7 +18,7 @@ This branch contains the check logs from the latest R CMD check run.
     GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
 * running under: Ubuntu 24.04.4 LTS
 * using session charset: UTF-8
-* current time: 2026-07-12 09:31:22 UTC
+* current time: 2026-07-12 09:34:28 UTC
 * using options ‘--no-manual --as-cran’
 * checking for file ‘dumpsterfire/DESCRIPTION’ ... OK
 * this is package ‘dumpsterfire’ version ‘20260606-1’
@@ -55,7 +55,8 @@ Non-standard file/directory found at top level:
 * checking whether the namespace can be loaded with stated dependencies ... OK
 * checking whether the namespace can be unloaded cleanly ... OK
 * checking loading without being on the library search path ... OK
-* checking dependencies in R code ... OK
+* checking dependencies in R code ... NOTE
+package 'methods' is used but not declared
 * checking S3 generic/method consistency ... OK
 * checking replacement functions ... OK
 * checking foreign function calls ... OK
@@ -110,5 +111,5 @@ Execution halted
 * checking for non-standard things in the check directory ... OK
 * checking for detritus in the temp directory ... OK
 * DONE
-Status: 1 ERROR, 2 WARNINGs, 3 NOTEs
+Status: 1 ERROR, 2 WARNINGs, 4 NOTEs
 ```

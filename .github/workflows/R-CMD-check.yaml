@@ -64,3 +64,83 @@ jobs:
           message("Success: Package built and installed successfully.")
         shell: Rscript {0}
 
+      - name: Upload 00check.log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.config.os }}-${{ matrix.config.r }}
+          path: check/**/*.Rcheck/00check.log
+          if-no-files-found: ignore
+
+  update-status:
+    needs: R-CMD-check
+    runs-on: ubuntu-latest
+    if: always()
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Download all 00check.log artifacts
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          path: downloaded-logs
+
+      - name: Update status branch
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Fetch all branches to ensure we see the status branch if it exists
+          git fetch origin
+          
+          # Switch to status branch, or create it if it doesn't exist
+          if git checkout status; then
+            git pull origin status
+          else
+            git checkout --orphan status
+            git rm -rf .
+          fi
+          
+          # Copy downloaded logs to corresponding subfolders
+          if [ -d "downloaded-logs" ]; then
+            for dir in downloaded-logs/*; do
+              if [ -d "$dir" ] && [ -f "$dir/00check.log" ]; then
+                name=$(basename "$dir")
+                # name is <os>-<r>
+                if [[ "$name" == ubuntu-latest-* ]]; then
+                  os="ubuntu-latest"
+                  r="${name#ubuntu-latest-}"
+                elif [[ "$name" == macos-latest-* ]]; then
+                  os="macos-latest"
+                  r="${name#macos-latest-}"
+                elif [[ "$name" == windows-latest-* ]]; then
+                  os="windows-latest"
+                  r="${name#windows-latest-}"
+                else
+                  continue
+                fi
+                mkdir -p "$os/$r"
+                cp "$dir/00check.log" "$os/$r/00check.log"
+              fi
+            done
+            # Remove downloaded logs temp dir
+            rm -rf downloaded-logs
+          else
+            echo "No downloaded logs found."
+          fi
+          
+          # Check if there are any changes to commit
+          if [ -n "$(git status --porcelain)" ]; then
+            git add .
+            git commit -m "Update R CMD check logs [skip ci]"
+            git push origin status
+          else
+            echo "No changes to commit."
+          fi
+
+

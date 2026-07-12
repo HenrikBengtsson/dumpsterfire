@@ -109,23 +109,29 @@ jobs:
           # Copy downloaded logs to corresponding subfolders
           if [ -d "downloaded-logs" ]; then
             for dir in downloaded-logs/*; do
-              if [ -d "$dir" ] && [ -f "$dir/00check.log" ]; then
-                name=$(basename "$dir")
-                # name is <os>-<r>
-                if [[ "$name" == ubuntu-latest-* ]]; then
-                  os="ubuntu-latest"
-                  r="${name#ubuntu-latest-}"
-                elif [[ "$name" == macos-latest-* ]]; then
-                  os="macos-latest"
-                  r="${name#macos-latest-}"
-                elif [[ "$name" == windows-latest-* ]]; then
-                  os="windows-latest"
-                  r="${name#windows-latest-}"
+              if [ -d "$dir" ]; then
+                log_file=$(find "$dir" -name "00check.log" -print -quit)
+                if [ -n "$log_file" ] && [ -f "$log_file" ]; then
+                  name=$(basename "$dir")
+                  # name is <os>-<r>
+                  if [[ "$name" == ubuntu-latest-* ]]; then
+                    os="ubuntu-latest"
+                    r="${name#ubuntu-latest-}"
+                  elif [[ "$name" == macos-latest-* ]]; then
+                    os="macos-latest"
+                    r="${name#macos-latest-}"
+                  elif [[ "$name" == windows-latest-* ]]; then
+                    os="windows-latest"
+                    r="${name#windows-latest-}"
+                  else
+                    continue
+                  fi
+                  mkdir -p "$os/$r"
+                  cp "$log_file" "$os/$r/00check.log"
+                  echo "Copied $log_file to $os/$r/00check.log"
                 else
-                  continue
+                  echo "No 00check.log found in $dir"
                 fi
-                mkdir -p "$os/$r"
-                cp "$dir/00check.log" "$os/$r/00check.log"
               fi
             done
             # Remove downloaded logs temp dir

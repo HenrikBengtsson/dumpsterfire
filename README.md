@@ -1,12 +1,24 @@
-* using log directory ‘/Users/runner/work/dumpsterfire/dumpsterfire/check/dumpsterfire.Rcheck’
-* using R version 4.6.1 (2026-06-24)
-* using platform: aarch64-apple-darwin23
+# dumpsterfire R CMD check Status 🔥
+
+This branch contains the check logs from the latest R CMD check run.
+
+## Logs by Environment
+- [macos-latest (release)](macos-latest/release/00check.log)
+- [windows-latest (release)](windows-latest/release/00check.log)
+- [ubuntu-latest (devel)](ubuntu-latest/devel/00check.log)
+- [ubuntu-latest (release)](ubuntu-latest/release/00check.log)
+- [ubuntu-latest (oldrel-1)](ubuntu-latest/oldrel-1/00check.log)
+## Latest ubuntu-latest (devel) log
+```plain
+* using log directory ‘/home/runner/work/dumpsterfire/dumpsterfire/check/dumpsterfire.Rcheck’
+* using R Under development (unstable) (2026-06-21 r90185)
+* using platform: x86_64-pc-linux-gnu
 * R was compiled by
-    Apple clang version 17.0.0 (clang-1700.3.19.1)
-    GNU Fortran (GCC) 14.2.0
-* running under: macOS Tahoe 26.4
+    gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+    GNU Fortran (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+* running under: Ubuntu 24.04.4 LTS
 * using session charset: UTF-8
-* current time: 2026-07-12 09:03:08 UTC
+* current time: 2026-07-12 09:03:24 UTC
 * using options ‘--no-manual --as-cran’
 * checking for file ‘dumpsterfire/DESCRIPTION’ ... OK
 * this is package ‘dumpsterfire’ version ‘20260606-1’
@@ -47,9 +59,9 @@ Standardizable: FALSE
 * checking foreign function calls ... OK
 * checking R code for possible problems ... NOTE
 boom: no visible global function definition for ‘packageName’
-  (/Users/runner/work/dumpsterfire/dumpsterfire/check/dumpsterfire.Rcheck/00_pkg_src/dumpsterfire/R/boom.R:2)
+  (/home/runner/work/dumpsterfire/dumpsterfire/check/dumpsterfire.Rcheck/00_pkg_src/dumpsterfire/R/boom.R:2)
 boom: no visible global function definition for ‘packageVersion’
-  (/Users/runner/work/dumpsterfire/dumpsterfire/check/dumpsterfire.Rcheck/00_pkg_src/dumpsterfire/R/boom.R:2)
+  (/home/runner/work/dumpsterfire/dumpsterfire/check/dumpsterfire.Rcheck/00_pkg_src/dumpsterfire/R/boom.R:2)
 Undefined global functions or variables:
   packageName packageVersion
 Consider adding
@@ -97,3 +109,4 @@ Execution halted
 * checking for detritus in the temp directory ... OK
 * DONE
 Status: 1 ERROR, 2 WARNINGs, 2 NOTEs
+```

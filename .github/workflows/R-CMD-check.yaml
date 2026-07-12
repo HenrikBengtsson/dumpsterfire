@@ -141,19 +141,16 @@ jobs:
           fi
           
           # Generate/update README.md
-          cat << 'EOF' > README.md
-# dumpsterfire R CMD check Status 🔥
-
-This branch contains the check logs from the latest R CMD check run.
-
-## Logs by Environment
-- [macos-latest (release)](macos-latest/release/00check.log)
-- [windows-latest (release)](windows-latest/release/00check.log)
-- [ubuntu-latest (devel)](ubuntu-latest/devel/00check.log)
-- [ubuntu-latest (release)](ubuntu-latest/release/00check.log)
-- [ubuntu-latest (oldrel-1)](ubuntu-latest/oldrel-1/00check.log)
-
-EOF
+          echo "# dumpsterfire R CMD check Status 🔥" > README.md
+          echo "" >> README.md
+          echo "This branch contains the check logs from the latest R CMD check run." >> README.md
+          echo "" >> README.md
+          echo "## Logs by Environment" >> README.md
+          echo "- [macos-latest (release)](macos-latest/release/00check.log)" >> README.md
+          echo "- [windows-latest (release)](windows-latest/release/00check.log)" >> README.md
+          echo "- [ubuntu-latest (devel)](ubuntu-latest/devel/00check.log)" >> README.md
+          echo "- [ubuntu-latest (release)](ubuntu-latest/release/00check.log)" >> README.md
+          echo "- [ubuntu-latest (oldrel-1)](ubuntu-latest/oldrel-1/00check.log)" >> README.md
 
           if [ -f "ubuntu-latest/devel/00check.log" ]; then
             echo "## Latest ubuntu-latest (devel) log" >> README.md

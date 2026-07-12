@@ -18,6 +18,11 @@ This is a problematic, installable R package that triggers as many `R CMD check`
 2. It must be possible to attach the package with `library(dumpsterfire)`
 
 
+## Current Status
+
+The most recent `R CMD check` output can be found in the ['status' branch](https://github.com/HenrikBengtsson/dumpsterfire/tree/status).
+
+
 ## Starting Point
 
 Here's a start:
